@@ -3,9 +3,10 @@ import styles from "./ModalComp.module.css"
 export type TModalProps = {
 	showModal: boolean
 	toggleModal: React.Dispatch<React.SetStateAction<boolean>>
+    moves?: number
 }
 
-const ModalComp = ({ showModal, toggleModal }: TModalProps) => {
+const ModalComp = ({ showModal, toggleModal, moves }: TModalProps) => {
 	return (
 		<section
 			className={styles.final_result}
@@ -14,7 +15,7 @@ const ModalComp = ({ showModal, toggleModal }: TModalProps) => {
 			<button onClick={() => toggleModal(false)} className={styles.final_btn}>X</button>
 			<div className={styles.final_container}>
 				<h2>Final Score</h2>
-				<span className={styles.final_score}>score</span>
+				<span className={styles.final_score}>moves: {moves}</span>
 				<span className={styles.final_icon + " final_icon animate__delay-1s"}>
 					🎃
 				</span>

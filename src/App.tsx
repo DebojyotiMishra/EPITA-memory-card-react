@@ -95,7 +95,7 @@ const App = () => {
           );
         })}
       </div>
-      <ModalComp showModal={gameOver} toggleModal={setGameOver} />
+      <ModalComp showModal={gameOver} toggleModal={setGameOver} moves={moves} />
     </div>
   );
 };
