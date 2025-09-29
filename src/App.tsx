@@ -34,27 +34,19 @@ const App = () => {
   const [flippedCards, setFlippedCards] = useState<TCard["name"][]>([]);
 
   const handleCardClick = (clickedCard: TCard) => {
-    // check if card already matched
-    if (
-      clickedCard.matched ||
-      flippedCards.length === 2 ||
-      flippedCards.includes(clickedCard.name)
-    ) {
-      return;
-    }
-    // check if we have 2 cards flipped already
-    if (flippedCards.length === 2) {
-      return;
-    }
-    // Flip the card
-    setGameCards((prev) =>
-      prev.map((card) =>
-        card.id === clickedCard.id ? { ...card, flipped: !card.flipped } : card
-      )
-    );
-    setFlippedCards((prev) => [...prev, clickedCard["name"]]);
-    console.log("Flipped Cards:", flippedCards);
-  };
+	// Check if the card is already matched
+	if (clickedCard.matched) return
+	// Check if we have have 2 cards flipped already
+	if (flippedCards.length === 2) return
+
+	// Flip the card
+	setGameCards((prev) =>
+		prev.map((card) =>
+			card.id === clickedCard.id ? { ...card, flipped: !card.flipped } : card
+		)
+	)
+	setFlippedCards((prev) => [...prev, clickedCard["name"]])
+}
 
   useEffect(() => {
     if (flippedCards.length === 2) {
